@@ -23,6 +23,7 @@ import { SIZES, FONTS, COLORS } from '../../constants/Theme';
 import { StockData } from '../../types/index';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
+import StockGraphLarge from '../../components/StockGraphLarge';
 
 type RootStackParamList = {
   Portfolio: { stock: StockData };
@@ -83,7 +84,6 @@ export default function Portfolio() {
               <Text style={styles.desc}>{selectedStock?.name}</Text>
             </View>
           </View>
-
           {/* Rate */}
           <View style={styles.rate}>
             <Text style={FONTS.h1}>${selectedStock?.quote['05. price']}</Text>
@@ -115,9 +115,10 @@ export default function Portfolio() {
                   ')'}
             </Text>
           </View>
-
           {/* Graph */}
-
+          <View>
+            <StockGraphLarge graphData={selectedStock?.graph} />
+          </View>
           {/* info */}
           <View style={styles.info}>
             <View style={styles.infoItem}>
@@ -145,9 +146,7 @@ export default function Portfolio() {
               </Text>
             </View>
           </View>
-
           {/* add to portfolio button */}
-
           <TextButton
             onPress={() => {
               navigation.navigate('Market');
