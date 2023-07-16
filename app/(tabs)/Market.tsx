@@ -10,6 +10,7 @@ import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import DataList from '../../components/DataList';
 import { COLORS, SIZES } from '../../constants/Theme';
 import { fetchData } from '../../api';
+import Header from '../../components/Header';
 
 export default function Market() {
   const layout = useWindowDimensions();
@@ -76,6 +77,7 @@ export default function Market() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* header  */}
+      <Header />
       <View style={styles.searchContainer}>{/* search */}</View>
 
       {/* tabs */}
