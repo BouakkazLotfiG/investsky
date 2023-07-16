@@ -9,9 +9,12 @@ import React, { useState } from 'react';
 import { StockData } from '../types';
 import { useDispatch } from 'react-redux';
 import { COLORS, SIZES } from '../constants/Theme';
+import { selectedStock } from '../slices/stockSlice';
+import { useNavigation } from 'expo-router';
 
 export default function DataList({ data }: StockData) {
   const [isLoading, setIsLoading] = useState(false);
+  const navigation = useNavigation();
   const dispatch = useDispatch();
   return (
     <>

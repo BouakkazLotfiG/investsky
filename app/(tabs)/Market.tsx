@@ -5,11 +5,11 @@ import {
   useWindowDimensions,
   StyleSheet,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
-import { useNavigation } from 'expo-router';
 import DataList from '../../components/DataList';
-import { COLORS, SIZES, FONTS } from '../../constants/Theme';
+import { COLORS, SIZES } from '../../constants/Theme';
+import { fetchData } from '../../api';
 
 export default function Market() {
   const layout = useWindowDimensions();
@@ -17,7 +17,6 @@ export default function Market() {
   const [data, setData] = useState([]);
   const [index, setIndex] = React.useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const navigation = useNavigation();
 
   // content of each tab
   const MainMarket = () => <DataList data={searchResults} />;
@@ -56,6 +55,16 @@ export default function Market() {
       )}
     />
   );
+
+  useEffect(() => {
+    const fetchStocks = async () => {
+      setIsLoading(true);
+      const fetchedData = await fetchData();
+      setSearchResults(fetchedData);
+    };
+
+    fetchStocks();
+  }, []);
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* header  */}
