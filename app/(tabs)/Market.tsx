@@ -59,12 +59,20 @@ export default function Market() {
   useEffect(() => {
     const fetchStocks = async () => {
       setIsLoading(true);
-      const fetchedData = await fetchData();
-      setSearchResults(fetchedData);
+      try {
+        const fetchedData = await fetchData();
+        console.log('market', fetchedData);
+        setSearchResults(fetchedData);
+      } catch (error) {
+        console.log('Error fetching stocks:', error);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     fetchStocks();
   }, []);
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* header  */}

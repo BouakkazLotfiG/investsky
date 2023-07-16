@@ -23,6 +23,7 @@ export interface GraphData {
 
 export interface StockData {
   symbol: string;
+  name: string;
   quote: QuoteData;
   graph: GraphData;
 }

@@ -2,6 +2,8 @@ import { useNavigation, Stack } from 'expo-router';
 import { useEffect, useState } from 'react';
 
 import * as Font from 'expo-font';
+import store from '../store';
+import { Provider } from 'react-redux';
 
 export { ErrorBoundary } from 'expo-router';
 
@@ -32,12 +34,12 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   return (
-    <>
+    <Provider store={store}>
       <Stack>
         <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
         <Stack.Screen name='index' options={{ headerShown: false }} />
         <Stack.Screen name='[...missing]' options={{ headerShown: false }} />
       </Stack>
-    </>
+    </Provider>
   );
 }

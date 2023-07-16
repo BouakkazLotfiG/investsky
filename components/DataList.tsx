@@ -13,6 +13,7 @@ import { selectedStock } from '../slices/stockSlice';
 import { useNavigation } from 'expo-router';
 
 export default function DataList({ data }: StockData) {
+  console.log('data ', data);
   const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -26,7 +27,6 @@ export default function DataList({ data }: StockData) {
             </View>
           </View>
         ) : (
-          data[0]?.graph &&
           data?.map((item: StockData, index: number) => {
             // console.log('symbol ', item.quote);
             if (!item) {
@@ -48,7 +48,7 @@ export default function DataList({ data }: StockData) {
                 <View style={styles.listItem}>
                   <View style={{ width: '25%' }}>
                     <Text style={styles.ticker}>{item.symbol}</Text>
-                    <Text style={styles.description}>Desription</Text>
+                    <Text style={styles.description}>{item.name}</Text>
                   </View>
                   <View style={{ width: '35%' }}>{/* GRAPH */}</View>
                   <View style={{ width: '40%' }}>
