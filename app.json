@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "investsky",
+    "name": "Stock App(test)",
     "slug": "investsky",
+    "description": "This is a stock app for investsky's frontend test",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
