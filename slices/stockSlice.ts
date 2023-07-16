@@ -4,6 +4,7 @@ import { StockData } from '../types';
 
 const initialState: StockData = {
   symbol: '',
+  name: '',
   quote: {
     '01. symbol': '',
     '02. open': '',
@@ -25,6 +26,7 @@ export const stockSlice = createSlice({
   reducers: {
     selectedStock: (state, action: PayloadAction<StockData>) => {
       state.symbol = action.payload.symbol;
+      state.name = action.payload.name;
       state.quote = action.payload.quote;
       state.graph = action.payload.graph;
     },
