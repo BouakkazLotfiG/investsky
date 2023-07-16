@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import * as Font from 'expo-font';
 import store from '../store';
 import { Provider } from 'react-redux';
+import { Toast } from 'react-native-toast-message/lib/src/Toast';
 
 export { ErrorBoundary } from 'expo-router';
 
@@ -40,6 +41,7 @@ function RootLayoutNav() {
         <Stack.Screen name='index' options={{ headerShown: false }} />
         <Stack.Screen name='[...missing]' options={{ headerShown: false }} />
       </Stack>
+      <Toast />
     </Provider>
   );
 }

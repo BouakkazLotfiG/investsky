@@ -4,6 +4,7 @@ import { TextInput, StyleSheet, SafeAreaView } from 'react-native';
 import { SIZES, COLORS } from '../constants/Theme';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { MOCK_API_KEY } from '@env';
 
 interface StockSearchProps {
   onResults: (results: any) => void;
@@ -14,7 +15,7 @@ const StockSearch: React.FC<StockSearchProps> = (props) => {
 
   const handleSearch = async () => {
     console.log('SEARCHING', query);
-    const url = new URL('https://64b442f30efb99d86268ea08.mockapi.io/stocks');
+    const url = new URL(`https://${MOCK_API_KEY}.mockapi.io/stocks`);
     url.searchParams.append('name', query);
 
     fetch(url, {
@@ -28,7 +29,6 @@ const StockSearch: React.FC<StockSearchProps> = (props) => {
         throw new Error('Network response was not ok.');
       })
       .then((stocks) => {
-        console.log('tasks ', stocks);
         props.onResults(stocks);
       })
       .catch((error) => {

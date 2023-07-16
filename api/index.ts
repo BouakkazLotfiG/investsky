@@ -1,4 +1,6 @@
 import { StockData } from '../types';
+import { MOCK_API_KEY } from '@env';
+
 interface Props {
   symbol?: string | string[];
 }
@@ -6,7 +8,7 @@ interface Props {
 export const fetchData = async (props: Props = {}): Promise<StockData[]> => {
   const stockSymbols = props.symbol;
 
-  return fetch('https://64b442f30efb99d86268ea08.mockapi.io/stocks', {
+  return fetch(`https://${MOCK_API_KEY}.mockapi.io/stocks`, {
     method: 'GET',
     headers: { 'content-type': 'application/json' },
   })

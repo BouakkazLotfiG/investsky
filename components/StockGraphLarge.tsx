@@ -42,6 +42,7 @@ const StockGraphLarge: React.FC<StockGraphLargeProps> = (props) => {
     setChartRange(chartRange);
   }, [chartRange]);
 
+  //handling range button press
   const handleRangeButtonPress = (range: string) => {
     setSelectedRange(range);
     let newData: StockData[];
@@ -87,6 +88,7 @@ const StockGraphLarge: React.FC<StockGraphLargeProps> = (props) => {
             tickLabels: { fill: 'transparent' },
           }}
         />
+
         <VictoryLine
           data={chartData}
           x='x'
