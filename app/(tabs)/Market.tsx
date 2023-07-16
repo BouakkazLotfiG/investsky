@@ -11,6 +11,7 @@ import DataList from '../../components/DataList';
 import { COLORS, SIZES } from '../../constants/Theme';
 import { fetchData } from '../../api';
 import Header from '../../components/Header';
+import StockSearch from '../../components/SearchStock';
 
 export default function Market() {
   const layout = useWindowDimensions();
@@ -78,7 +79,11 @@ export default function Market() {
     <ScrollView contentContainerStyle={styles.container}>
       {/* header  */}
       <Header />
-      <View style={styles.searchContainer}>{/* search */}</View>
+
+      {/* search */}
+      <View style={styles.searchContainer}>
+        <StockSearch onResults={setSearchResults} />
+      </View>
 
       {/* tabs */}
       <TabView

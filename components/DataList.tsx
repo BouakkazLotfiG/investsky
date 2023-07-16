@@ -11,6 +11,7 @@ import { useDispatch } from 'react-redux';
 import { COLORS, SIZES } from '../constants/Theme';
 import { selectedStock } from '../slices/stockSlice';
 import { useNavigation } from 'expo-router';
+import StockGraph from './StockGraph';
 
 export default function DataList({ data }: StockData) {
   console.log('data ', data);
@@ -46,11 +47,18 @@ export default function DataList({ data }: StockData) {
                 }}
               >
                 <View style={styles.listItem}>
+                  {/* stock name */}
                   <View style={{ width: '25%' }}>
                     <Text style={styles.ticker}>{item.symbol}</Text>
                     <Text style={styles.description}>{item.name}</Text>
                   </View>
-                  <View style={{ width: '35%' }}>{/* GRAPH */}</View>
+
+                  {/* stock graph */}
+                  <View style={{ width: '35%' }}>
+                    <StockGraph graphData={item.graph} />
+                  </View>
+
+                  {/* stock price */}
                   <View style={{ width: '40%' }}>
                     <Text style={styles.pricer}>
                       {' '}
