@@ -1,55 +1,78 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable, useColorScheme } from 'react-native';
+import { Tabs } from 'expo-router';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
-import Colors from '../../constants/Colors';
+import { COLORS } from '../../constants/Theme';
 
-/**
- * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
- */
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
-}
+import {
+  faCircleHalfStroke,
+  faMoneyBillTrendUp,
+  faNewspaper,
+} from '@fortawesome/free-solid-svg-icons';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
+    <>
+      <Tabs
+        screenOptions={{
+          tabBarActiveTintColor: COLORS.primary,
+          headerShown: false,
+          tabBarStyle: {
+            backgroundColor: 'white',
+
+            height: 90,
+            paddingBottom: 10,
+          },
+          tabBarItemStyle: {
+            margin: 5,
+            borderRadius: 10,
+          },
         }}
-      />
-      <Tabs.Screen
-        name="two"
-        options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-    </Tabs>
+      >
+        <Tabs.Screen
+          name='Portfolio'
+          options={{
+            tabBarLabelStyle: {
+              fontFamily: 'Roboto-Bold',
+            },
+
+            tabBarIcon: ({ color }) => (
+              <FontAwesomeIcon
+                icon={faCircleHalfStroke}
+                color={color}
+                size={30}
+              />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name='Market'
+          options={{
+            title: 'Market',
+            tabBarIcon: ({ color }) => (
+              <FontAwesomeIcon
+                color={color}
+                icon={faMoneyBillTrendUp}
+                size={30}
+              />
+            ),
+            tabBarLabelStyle: {
+              fontFamily: 'Roboto-Bold',
+            },
+          }}
+        />
+        <Tabs.Screen
+          name='News'
+          options={{
+            title: 'News',
+            tabBarIcon: ({ color }) => (
+              <FontAwesomeIcon color={color} icon={faNewspaper} size={30} />
+            ),
+            tabBarLabelStyle: {
+              fontFamily: 'Roboto-Bold',
+            },
+          }}
+        />
+      </Tabs>
+    </>
   );
 }
