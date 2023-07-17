@@ -12,14 +12,11 @@ import { COLORS, SIZES } from '../../constants/Theme';
 import { fetchData } from '../../api';
 import Header from '../../components/Header';
 import StockSearch from '../../components/SearchStock';
-import { StockData } from '../../types';
 
 const Market: React.FC = () => {
   const layout = useWindowDimensions();
   const [searchResults, setSearchResults] = useState([]);
-  const [data, setData] = useState([]);
   const [index, setIndex] = React.useState(0);
-  const [isLoading, setIsLoading] = useState(false);
 
   // content of each tab
   const MainMarket = () => <DataList data={searchResults} />;
@@ -59,9 +56,9 @@ const Market: React.FC = () => {
     />
   );
 
+  // fetching data
   useEffect(() => {
     const fetchStocks = async () => {
-      setIsLoading(true);
       console.log('Fetching data...');
       try {
         const fetchedData = await fetchData();
@@ -69,7 +66,6 @@ const Market: React.FC = () => {
       } catch (error) {
         console.log('Error fetching stocks:', error);
       } finally {
-        setIsLoading(false);
         console.log('Fetching DONE');
       }
     };

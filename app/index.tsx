@@ -1,11 +1,4 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  Button,
-  StyleSheet,
-  ImageBackground,
-} from 'react-native';
+import { SafeAreaView, StyleSheet, ImageBackground } from 'react-native';
 import React from 'react';
 import { useNavigation } from 'expo-router';
 import TextButton from '../components/buttons/TextButton';

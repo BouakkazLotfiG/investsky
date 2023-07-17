@@ -1,4 +1,4 @@
-import { useNavigation, Stack } from 'expo-router';
+import { Stack } from 'expo-router';
 import { useEffect, useState } from 'react';
 
 import * as Font from 'expo-font';
