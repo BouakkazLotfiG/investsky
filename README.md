@@ -25,6 +25,26 @@ I hope my efforts reflect well in my work, and I eagerly anticipate the potentia
 Best regards,
 Lotfi
 
+# Getting Started
+- Clone the repository
+`git clone https://github.com/BouakkazLotfiG/investsky`
+
+- Install dependencies
+`cd Your-App-Directory`
+`npm install`
+
+- Start the app
+`npm start`
+
+- You will be prompted with QR code:
+* #### iOS Devices:
+Open your camera app, point it at the QR code, and tap the notification that pops up.
+* #### Android Devices: 
+You'll need to have the Expo Go app installed. Open the Expo Go app, tap on the "Scan QR Code" option, and scan the QR code.
+
+
+
+
 # [Expo link](https://expo.dev/@lotfibouakkaz/investsky?serviceType=classic&distribution=expo-go)
 
 ![app qr code](https://github.com/BouakkazLotfiG/test/blob/eefdbc38d454a88cfbff97b346c20adc0e1a1d21/qr.png)
