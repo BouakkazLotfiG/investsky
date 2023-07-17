@@ -30,7 +30,7 @@ Lotfi
 `git clone https://github.com/BouakkazLotfiG/investsky`
 
 - Install dependencies
-`cd Your-App-Directory`
+`cd investsky`
 `npm install`
 
 - Start the app
