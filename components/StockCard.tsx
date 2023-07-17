@@ -5,8 +5,13 @@ import IconButton from './buttons/IconButton';
 import { removeStock } from '../slices/userSlice';
 import { useDispatch } from 'react-redux';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { StockData } from '../types';
 
-export default function StockCard({ stock }: any) {
+interface StockCardProps {
+  stock: StockData;
+}
+
+const StockCard: React.FC<StockCardProps> = ({ stock }) => {
   const dispatch = useDispatch();
   return (
     <View style={styles.container}>
@@ -48,7 +53,7 @@ export default function StockCard({ stock }: any) {
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -98,3 +103,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
+
+export default StockCard;

@@ -13,8 +13,11 @@ import { selectedStock } from '../slices/stockSlice';
 import { useNavigation } from 'expo-router';
 import StockGraph from './StockGraph';
 
-export default function DataList({ data }: StockData) {
-  console.log('data ', data);
+interface DataListProps {
+  data: StockData[];
+}
+
+const DataList: React.FC<DataListProps> = ({ data }) => {
   const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -55,7 +58,7 @@ export default function DataList({ data }: StockData) {
 
                   {/* stock graph */}
                   <View style={{ width: '35%' }}>
-                    <StockGraph graphData={item.graph} />
+                    <StockGraph data={item.graph} />
                   </View>
 
                   {/* stock price */}
@@ -66,15 +69,14 @@ export default function DataList({ data }: StockData) {
                     </Text>
                     <Text
                       style={
-                        +item.quote['09. change']?.replace('%', '') > 0
+                        +item.quote['10. change percent']?.replace('%', '') > 0
                           ? styles.pourcentageUP
                           : styles.pourcentageDOWN
                       }
                     >
-                      {+item.quote['09. change']?.replace('%', '') > 0
-                        ? '+' + item.quote['09. change'] + '%'
-                        : item.quote['09. change']}{' '}
-                      %
+                      {+item.quote['10. change percent']?.replace('%', '') > 0
+                        ? '+' + item.quote['10. change percent']
+                        : item.quote['10. change percent']}{' '}
                     </Text>
                   </View>
                 </View>
@@ -85,7 +87,7 @@ export default function DataList({ data }: StockData) {
       </ScrollView>
     </>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -124,6 +126,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
     paddingHorizontal: 25,
+
+    overflow: 'hidden',
   },
   ticker: {
     fontSize: 20,
@@ -170,3 +174,5 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto-ExtraBold',
   },
 });
+
+export default DataList;

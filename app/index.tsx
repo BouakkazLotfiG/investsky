@@ -21,9 +21,6 @@ export default function index() {
   return (
     <ImageBackground source={require('../assets/images/splash.png')}>
       <SafeAreaView style={styles.container}>
-        {/* <Text style={styles.header}>
-        Thank you for letting me be part of this frontend test with{' '}
-      </Text> */}
         <TextButton
           text='Access the Stock APP'
           onPress={handleNavigateToTabs}

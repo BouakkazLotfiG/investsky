@@ -8,6 +8,7 @@ interface Props {
 export const fetchData = async (props: Props = {}): Promise<StockData[]> => {
   const stockSymbols = props.symbol;
 
+  // mockAPI could hold 8 stocks
   return fetch(`https://${MOCK_API_KEY}.mockapi.io/stocks`, {
     method: 'GET',
     headers: { 'content-type': 'application/json' },

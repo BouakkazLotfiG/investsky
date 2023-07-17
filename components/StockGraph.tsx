@@ -8,9 +8,12 @@ type StockData = {
   y: number;
 };
 
-const StockGraph: React.FC = (props: GraphData) => {
-  const [data, setData] = useState<StockData[]>([]);
-  const graphData = props.graphData;
+interface StockGraphProps {
+  data: GraphData;
+}
+
+const StockGraph: React.FC<StockGraphProps> = ({ data }) => {
+  const graphData = data || null;
 
   const timeSeries = graphData;
   const formattedData: StockData[] = Object.keys(timeSeries).map((date) => {

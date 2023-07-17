@@ -21,14 +21,17 @@ interface StockGraphLargeProps {
 const StockGraphLarge: React.FC<StockGraphLargeProps> = (props) => {
   const { graphData } = props;
 
+  // formatting the data for the graph
   const formattedData: StockData[] = Object.keys(graphData).map(
     (date: string) => {
       return { x: date, y: parseFloat(graphData[date as any]['4. close']) };
     }
   );
+
   const [chartData, setChartData] = useState(formattedData);
   const [selectedRange, setSelectedRange] = useState('1Y');
 
+  // initializing the graph range with the entire data
   const [chartRange, setChartRange] = useState<{
     x: [number, number];
     y: [number, number];
@@ -38,7 +41,6 @@ const StockGraphLarge: React.FC<StockGraphLargeProps> = (props) => {
   });
 
   useEffect(() => {
-    console.log('chartRange', chartRange);
     setChartRange(chartRange);
   }, [chartRange]);
 
@@ -49,13 +51,13 @@ const StockGraphLarge: React.FC<StockGraphLargeProps> = (props) => {
 
     switch (range) {
       case '1D':
-        newData = formattedData.slice(0, 10);
+        newData = formattedData.slice(0, 6);
         break;
       case '1W':
-        newData = formattedData.slice(0, 20);
+        newData = formattedData.slice(0, 18);
         break;
       case '1M':
-        newData = formattedData.slice(0, 30);
+        newData = formattedData.slice(0, 25);
         break;
       case '3M':
         newData = formattedData.slice(0, 40);

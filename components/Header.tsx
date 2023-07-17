@@ -5,7 +5,6 @@ import { faBars, faBell } from '@fortawesome/free-solid-svg-icons';
 import { COLORS, SIZES } from '../constants/Theme';
 
 export default function Header() {
-  const [searchResults, setSearchResults] = useState([]);
   return (
     <SafeAreaView style={styles.headerContainer}>
       <View style={styles.headerNavigation}>

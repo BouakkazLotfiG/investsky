@@ -25,19 +25,12 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import StockGraphLarge from '../../components/StockGraphLarge';
 
-type RootStackParamList = {
-  Portfolio: { stock: StockData };
-};
-type PortfolioRouteProp = RouteProp<RootStackParamList, 'Portfolio'>;
-
-export default function Portfolio() {
+const Portfolio: React.FC = () => {
   const navigation = useNavigation<any>();
-  const route = useRoute<PortfolioRouteProp>();
   const [selectedStock, setSelectedStock] = useState<StockData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const stock = useSelector((state: RootState) => state.stock);
   const dispatch = useDispatch();
-  console.log('stock', stock.symbol);
 
   const handleNavigateToTabs = () => {
     navigation.navigate('(tabs)', { screen: 'Market' });
@@ -159,7 +152,7 @@ export default function Portfolio() {
       )}
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -234,3 +227,5 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto-ExtraBold',
   },
 });
+
+export default Portfolio;

@@ -12,8 +12,9 @@ import { COLORS, SIZES } from '../../constants/Theme';
 import { fetchData } from '../../api';
 import Header from '../../components/Header';
 import StockSearch from '../../components/SearchStock';
+import { StockData } from '../../types';
 
-export default function Market() {
+const Market: React.FC = () => {
   const layout = useWindowDimensions();
   const [searchResults, setSearchResults] = useState([]);
   const [data, setData] = useState([]);
@@ -61,14 +62,15 @@ export default function Market() {
   useEffect(() => {
     const fetchStocks = async () => {
       setIsLoading(true);
+      console.log('Fetching data...');
       try {
         const fetchedData = await fetchData();
-        console.log('market', fetchedData);
-        setSearchResults(fetchedData);
+        setSearchResults(fetchedData as never);
       } catch (error) {
         console.log('Error fetching stocks:', error);
       } finally {
         setIsLoading(false);
+        console.log('Fetching DONE');
       }
     };
 
@@ -95,7 +97,7 @@ export default function Market() {
       />
     </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -180,3 +182,5 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto-ExtraBold',
   },
 });
+
+export default Market;

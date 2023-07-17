@@ -1,11 +1,11 @@
 import { View, Text, SafeAreaView, StyleSheet, ScrollView } from 'react-native';
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { SIZES, COLORS, FONTS } from '../../constants/Theme';
 import StockCard from '../../components/StockCard';
 
-export default function News() {
+const News: React.FC = () => {
   const stock = useSelector((state: RootState) => state.user);
   return (
     <SafeAreaView>
@@ -17,6 +17,7 @@ export default function News() {
             <>
               <Text style={styles.header}>Added Stock</Text>
 
+              {/* list of added stock to portfolio */}
               <View style={styles.cardsContainer}>
                 {stock.map((item) => (
                   <StockCard key={item.symbol} stock={item} />
@@ -28,7 +29,7 @@ export default function News() {
       </ScrollView>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -52,3 +53,5 @@ const styles = StyleSheet.create({
     paddingVertical: SIZES.paddingVertical,
   },
 });
+
+export default News;

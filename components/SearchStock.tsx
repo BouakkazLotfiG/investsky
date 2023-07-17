@@ -10,7 +10,7 @@ interface StockSearchProps {
   onResults: (results: any) => void;
 }
 
-const StockSearch: React.FC<StockSearchProps> = (props) => {
+const StockSearch: React.FC<StockSearchProps> = ({ onResults }) => {
   const [query, setQuery] = useState('');
 
   const handleSearch = async () => {
@@ -29,7 +29,7 @@ const StockSearch: React.FC<StockSearchProps> = (props) => {
         throw new Error('Network response was not ok.');
       })
       .then((stocks) => {
-        props.onResults(stocks);
+        onResults(stocks);
       })
       .catch((error) => {
         console.log('error ', error);
